@@ -8,6 +8,7 @@ use std::io::*;
 use flate2::Compression;
 use flate2::write::GzEncoder;
 
+#[allow(dead_code, unused_variables)]
 pub fn proceed() {
     if args().len() != 3 {
         eprintln!("Usage: 'source' 'target'");
@@ -15,7 +16,7 @@ pub fn proceed() {
     }
 
     let mut source = BufReader::new(File::open(args().nth(1).unwrap()).unwrap());
-    let mut target = File::create(args().nth(2).unwrap()).unwrap();
+    let target = File::create(args().nth(2).unwrap()).unwrap();
 
     let mut encoder = GzEncoder::new(target, Compression::default());
 
